@@ -1,0 +1,142 @@
+NET Ninja JWT
+
+Video 1
+JWT untuk otentikasi
+ejs = template engine
+
+Video 2
+Menggunakan MVC
+
+/signup get
+/login 	get
+/signup	post
+/login	post
+/logout	get
+
+npm install express
+
+video 3
+testing dengan postman
+
+hasilnya yang get muncul htmlnya
+
+app.use(express.json()) ==> untuk mengambil data json kirim ke js
+
+video 4
+User model schema
+
+membuat models/user.js
+dan simpan ke mongo
+
+video 5
+membuat costum validation error
+ubah di models/user.js
+
+npm i validator 
+untuk emailnya
+
+video 6
+mongoose hooks
+di models/user.js
+// Fire a function after doc saved to db
+next() harus ada disetiap middleware mongoose
+
+video 7
+hash password
+npm i bcrypt
+
+di models/user.js
+
+video 8
+tampilan sign up dan login
+
+video 9
+cookies
+di app.js
+
+cara ceknya di storage browser cookie
+cookie nya hilang ketika browser ditutup
+
+kalo di console ==> document.cookie
+
+npm i cookie-parser
+
+dalam membuat auth harus http/http
+
+video 10
+JWT Signing
+
+Header
+ Jenis signature yang di pakai
+Payload
+ Untuk identifikasi user (seperti user id)
+Signature
+ Membuat token secure (membuat timestamp dll)
+
+Video 11
+menyimpan dari form ke mongo
+di views/signup 
+
+try {
+     const res = await fetch('/signup', {
+	method: 'POST',
+	body: JSON.stringify({ email: email, password }),
+     	headers: { 'Content-Type': 'application/json' },
+     });
+} catch (err) {
+  console.log(err);
+}
+
+install JWT
+npm i jsonwebtoken
+
+buka authController.js
+lihat datanya di storage
+
+video 12
+validasi error untuk email dan pw
+di signup.ejs
+
+mengambil data _id untuk di JWT lalu disimpan di cookie
+membuat validasi
+mengkosongkan error
+
+
+video 13
+perubahan login.ejs
+
+perubahan models/user.js
+
+perubahan authController.js
+
+video 14
+perubahan login.ejs
+
+perubahan models/user.js
+
+perubahan authController.js
+
+video 15
+protecting routes dari user yang belum login
+
+membuat folder middleware
+
+perubahan app.js
+app.get('/smoothies', requireAuth,(req, res) => res.render('smoothies'));
+
+Video 16
+log out
+di authController
+
+res.cookie('jwt', '', { maxAge: 1 }); // bukan dihapus, tapi valuenya kosong dan maxAgenya jadi 1ms
+res.redirect('/');
+
+video 17
+checking current user
+di middleware.js
+
+di tarok di app.js
+
+Video 18
+di header.ejs
+lanjutan dari video17
